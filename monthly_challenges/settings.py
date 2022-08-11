@@ -57,8 +57,11 @@ ROOT_URLCONF = 'monthly_challenges.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
-        'APP_DIRS': True,
+        'DIRS': [
+            # BASE_DIR / "challenges" / "templates"
+            # here instead it could be a folder with global templates used by all apps
+        ],
+        'APP_DIRS': True, # if it's true, the above line is unecessary
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',

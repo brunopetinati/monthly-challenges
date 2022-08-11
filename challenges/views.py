@@ -2,6 +2,7 @@ from turtle import forward
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
 from django.urls import reverse
+from django.template.loader import render_to_string
 
 # Create your views here.
 
@@ -49,7 +50,14 @@ def monthly_challenge(request, month):
     
     try:
         challenge_text = monthly_challenges[month]
-        response_data = f"<h1>{challenge_text}</h1>"
-        return HttpResponse(response_data)
+
+        # always takes request as first argument
+        return render(request, 'challenges/challenge.html', { # object with the variables and their values
+            'month': month.capitalize(), 
+            'challenge': challenge_text
+        }) 
+        # response_data = render_to_string('challenges/challenge.html')
+        # return HttpResponse(response_data)
+        # due to django.shortcuts it's possible to skip those 2 lines above
     except:
         return HttpResponseNotFound('<h1>this month is not supported</h1>')
