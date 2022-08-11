@@ -18,7 +18,7 @@ monthly_challenges = {
     'september': 'try to figure out how to charge credit cards through a web app',
     'october': 'play pump it up every sunday',
     'november': 'finish reading 3 books',
-    'december': 'start the technical book in web development'
+    'december': None
 }
 
 def index(request):

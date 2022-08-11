@@ -8,6 +8,10 @@
   </head>
   <body>
     <h1>This is the {{ month|title }}'s perfect view!</h1>
-    <h2>{{ challenge }}</h2>
+    {% if challenge %}
+      <h2>{{ challenge }}</h2>
+    {% else %}
+      <p>There is no challenge for this month yet!!</p>
+    {% endif %}
   </body>
 </html>
