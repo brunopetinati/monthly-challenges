@@ -1,6 +1,7 @@
 from turtle import forward
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
+from django.urls import reverse
 
 # Create your views here.
 
@@ -26,14 +27,17 @@ def monthly_challenge_by_number(request, month):
         return HttpResponseNotFound('invalid month')
 
     redirect_month = months[month - 1]
+    redirect_path = reverse('path_name', args=[redirect_month]) # /challenge/january
 
-    return HttpResponseRedirect('/challenges/' + redirect_month)
+    #return HttpResponseRedirect('/challenges/' + redirect_month)
+    return HttpResponseRedirect(redirect_path)
 
 
 def monthly_challenge(request, month):
     
     try:
         challenge_text = monthly_challenges[month]
-        return HttpResponse(challenge_text)
+        response_data = f"<h1>{challenge_text}</h1>"
+        return HttpResponse(response_data)
     except:
-        return HttpResponseNotFound('this month is not supported')
+        return HttpResponseNotFound('<h1>this month is not supported</h1>')
