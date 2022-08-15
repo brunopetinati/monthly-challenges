@@ -1,16 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>All challenges!!</title>
-  </head>
-  <body>
+{% extends "base.html" %}
+
+{% block page_title %}
+  All Chalenges!
+{% endblock %}
+
+  {% block content %}
+  {% include  "challenges/includes/header.html" %}
     <ul>
         {% for month in months %}
           <li><a href="{% url 'path_name' month %}">{{ month|title }}</a></li>
         {% endfor %}
     </ul>
-  </body>
-</html>
+  {% endblock %}

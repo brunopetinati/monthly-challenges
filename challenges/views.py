@@ -43,16 +43,17 @@ def monthly_challenge_by_number(request, month):
 
 def monthly_challenge(request, month):
     
-    try:
+    try:    
+        #pdb.set_trace()
         challenge_text = monthly_challenges[month]
-
-        # always takes request as first argument
-        return render(request, 'challenges/challenge.html', { # object with the variables and their values
+        
+        # always takes request as first argument # object with the variables and their values
+        return render(request, 'challenges/challenge.html', {
             'month': month, 
             'challenge': challenge_text
         }) 
         # response_data = render_to_string('challenges/challenge.html')
         # return HttpResponse(response_data)
-        # due to django.shortcuts it's possible to skip those 2 lines above
+        # due to django.shortcuts it's possible to skip those 2 lines above 
     except:
-        return HttpResponseNotFound('<h1>this month is not supported</h1>')
+       return HttpResponseNotFound('<h1>this month is not supported</h1>')

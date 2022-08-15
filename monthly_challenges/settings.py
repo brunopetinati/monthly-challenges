@@ -60,6 +60,7 @@ TEMPLATES = [
         'DIRS': [
             # BASE_DIR / "challenges" / "templates"
             # here instead it could be a folder with global templates used by all apps
+            BASE_DIR / "templates"
         ],
         'APP_DIRS': True, # if it's true, the above line is unecessary
         'OPTIONS': {
