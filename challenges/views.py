@@ -1,6 +1,6 @@
 from turtle import forward
 from django.shortcuts import render
-from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect, Http404
 from django.urls import reverse
 from django.template.loader import render_to_string
 
@@ -42,9 +42,8 @@ def monthly_challenge_by_number(request, month):
 
 
 def monthly_challenge(request, month):
-    
-    #try:    
-        #pdb.set_trace()
+
+    try:    
         challenge_text = monthly_challenges[month]
         
         # always takes request as first argument # object with the variables and their values
@@ -55,5 +54,7 @@ def monthly_challenge(request, month):
         # response_data = render_to_string('challenges/challenge.html')
         # return HttpResponse(response_data)
         # due to django.shortcuts it's possible to skip those 2 lines above 
-    #except:
-    #   return HttpResponseNotFound('<h1>this month is not supported</h1>')
+    except:
+        #response_data = render_to_string('404.html')
+        #return HttpResponse(response_data)
+        raise Http404()
