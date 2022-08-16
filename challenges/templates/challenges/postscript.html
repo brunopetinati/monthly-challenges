@@ -1,0 +1,10 @@
+<h1>Remember</h1>
+
+<p>Imagine, that you want to build a static URL where some part of the URL (e.g. the
+    filename) is actually stored in a variable that's exposed to the template.</p>
+<p>So you might want to build the URL like this:</p>
+<p>&#123;% static "my_path/to/" + the_file %&#125;</p>
+<p>Here, "the_file" would be a variable holding the actual filename.</p>
+<p>The above code would fail.</p>
+<p>Instead, you can use the "add" filter provided by Django to construct this path dynamically:</p>
+<p>&#123;% static "my_path/to/"|add:the_file %&#125;</p>

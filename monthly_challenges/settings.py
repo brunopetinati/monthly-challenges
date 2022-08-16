@@ -128,3 +128,10 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# I added it myself. To have static css files that could be read. This is known by Django, and can
+# be found in the documentation in the beginning of this file.
+
+STATICFILES_DIRS = [
+    BASE_DIR / 'static'
+]
